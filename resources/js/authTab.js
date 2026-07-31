@@ -1,8 +1,6 @@
-// resources/js/auth-tab.js
-
 export function switchAuthTab(tab) {
-    const loginPanel = document.getElementById("loginPanel");
-    const registerPanel = document.getElementById("registerPanel");
+    const loginPanel = document.getElementById("loginForm");
+    const registerPanel = document.getElementById("registerForm");
     const tabLoginBtn = document.getElementById("tabLoginBtn");
     const tabRegisterBtn = document.getElementById("tabRegisterBtn");
 
