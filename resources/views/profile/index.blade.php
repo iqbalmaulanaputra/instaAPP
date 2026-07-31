@@ -38,7 +38,7 @@
 
         <div class="grid grid-cols-3 gap-3 mt-5">
             <div class="bg-[#ECF0F3] rounded-xl py-3 text-center">
-                <p class="text-lg font-bold text-[#0A2947]">6</p>
+                <p class="text-lg font-bold text-[#0A2947]">{{ $myPosts->count() }}</p>
                 <p class="text-xs text-[#0A2947]/50">Postingan</p>
             </div>
             <div class="bg-[#ECF0F3] rounded-xl py-3 text-center">
@@ -56,39 +56,46 @@
         </p>
     </div>
 
-    @php
-        $myPosts = [1, 2, 3, 4, 5, 6];
-        $savedPosts = [1, 2, 3];
-    @endphp
-
     <div id="profileGridTabs">
         <div class="flex items-center border-b border-[#76838F]/20">
             <button type="button" data-tab-btn="posts" onclick="switchTab('posts', 'profileGridTabs')"
                 class="flex-1 flex items-center justify-center gap-2 pb-3 text-sm font-semibold text-[#76ABAE] border-b-2 border-[#76ABAE]">
-                <i class='bx bx-grid-alt text-lg'></i> Postingan ({{ count($myPosts) }})
+                <i class='bx bx-grid-alt text-lg'></i> Postingan ({{ $myPosts->count() }})
             </button>
             <button type="button" data-tab-btn="saved" onclick="switchTab('saved', 'profileGridTabs')"
                 class="flex-1 flex items-center justify-center gap-2 pb-3 text-sm font-semibold text-[#0A2947]/50 border-b-2 border-transparent">
-                <i class='bx bx-bookmark text-lg'></i> Tersimpan ({{ count($savedPosts) }})
+                <i class='bx bx-bookmark text-lg'></i> Tersimpan ({{ $savedPosts->count() }})
             </button>
         </div>
 
         <div data-tab-panel="posts" class="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
-            @foreach ($myPosts as $post)
-                <button type="button"
+            @forelse ($myPosts as $post)
+                <button type="button" onclick="openModal('postDetail-{{ $post->id }}')"
                     class="aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
-
+                    <img src="{{ Storage::url($post->image) }}" alt="{{ $post->caption }}"
+                        class="w-full h-full object-cover">
                 </button>
-            @endforeach
+                <x-post.post-detail-modal :post="$post" />
+            @empty
+                <p class="col-span-3 sm:col-span-4 text-center text-sm text-[#0A2947]/40 py-6">
+                    Belum ada postingan.
+                </p>
+            @endforelse
         </div>
 
         <div data-tab-panel="saved" class="hidden grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
-            @foreach ($savedPosts as $post)
-                <button type="button"
+            @forelse ($savedPosts as $post)
+                <button type="button" onclick="openModal('postDetail-{{ $post->id }}')"
                     class="aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
-
+                    <img src="{{ Storage::url($post->image) }}" alt="{{ $post->caption }}"
+                        class="w-full h-full object-cover">
                 </button>
-            @endforeach
+                <x-post.post-detail-modal :post="$post" />
+            @empty
+                <p class="col-span-3 sm:col-span-4 text-center text-sm text-[#0A2947]/40 py-6">
+                    Belum ada postingan tersimpan.
+                </p>
+            @endforelse
         </div>
     </div>
 

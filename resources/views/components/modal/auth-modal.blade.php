@@ -31,7 +31,7 @@
 
             <div id="loginForm" class="p-6 flex flex-col gap-4">
 
-                <div id="loginError"
+                <div id="loginGeneralError"
                     class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
                 </div>
 
@@ -39,18 +39,20 @@
                     <label class="text-sm font-medium text-[#0A2947]">Username atau Email</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-user text-[#0A2947]/40'></i>
-                        <input type="text" id="loginField" placeholder="Masukkan username atau email"
+                        <input type="text" id="loginField" placeholder="misal: demouser"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="loginFieldError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Kata Sandi</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
-                        <input type="password" id="loginPassword" placeholder="Masukkan kata sandi"
+                        <input type="password" id="loginPassword" placeholder="••••••••"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="loginPasswordError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <button type="button" onclick="submitLogin('{{ route('login') }}')"
@@ -61,7 +63,7 @@
 
             <div id="registerForm" class="hidden p-6 flex-col gap-4">
 
-                <div id="registerError"
+                <div id="registerGeneralError"
                     class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
                 </div>
 
@@ -69,44 +71,47 @@
                     <label class="text-sm font-medium text-[#0A2947]">Nama Lengkap</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-id-card text-[#0A2947]/40'></i>
-                        <input type="text" id="registerName" placeholder="Masukkan nama lengkap"
+                        <input type="text" id="registerName" placeholder="misal: Demo User"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="registerNameError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Username</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-at text-[#0A2947]/40'></i>
-                        <input type="text" id="registerUsername" placeholder="Masukkan username"
+                        <input type="text" id="registerUsername" placeholder="misal: demouser"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="registerUsernameError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Email</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-envelope text-[#0A2947]/40'></i>
-                        <input type="email" id="registerEmail" placeholder="Masukkan email"
+                        <input type="email" id="registerEmail" placeholder="misal: demo@mail.com"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="registerEmailError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Kata Sandi</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
-                        <input type="password" id="registerPassword" placeholder="Masukkan kata sandi"
+                        <input type="password" id="registerPassword" placeholder="••••••••"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
+                    <p id="registerPasswordError" class="hidden text-xs text-rose-500 mt-1"></p>
                 </div>
 
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Konfirmasi Kata Sandi</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
-                        <input type="password" id="registerPasswordConfirmation"
-                            placeholder="Masukkan kembali kata sandi"
+                        <input type="password" id="registerPasswordConfirmation" placeholder="••••••••"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>

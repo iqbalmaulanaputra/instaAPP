@@ -17,7 +17,7 @@
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#0A2947]/60 hover:bg-[#76ABAE] hover:text-white transition text-left">
             <i class='bx bx-plus-circle text-lg'></i> Buat Post
         </button>
-        <x-nav.nav-link href="{{ url('/profile') }}" icon="bx-user" label="Profil Saya" />
+        <x-nav.nav-link href="{{ url('/profile') }}" icon="bx-user" label="Profil Saya" :auth-required="true" />
     </nav>
 
     <div class="mt-auto pt-6 border-t border-[#76838F]/30">

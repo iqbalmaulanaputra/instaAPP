@@ -9,6 +9,6 @@
             <i class='bx bx-plus-circle text-2xl'></i>
         </button>
 
-        <x-nav.nav-link href="{{ url('/profile') }}" icon="bx-user" variant="bottom" />
+        <x-nav.nav-link href="{{ url('/profile') }}" icon="bx-user" variant="bottom" :auth-required="true" />
     </div>
 </div>

@@ -25,7 +25,7 @@
 
                 <div data-tab-panel="edit" class="p-6 flex flex-col gap-4">
 
-                    <div id="profileError"
+                    <div id="profileGeneralError"
                         class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
                     </div>
 
@@ -39,12 +39,15 @@
                                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                             @endif
                         </div>
-                        <label
-                            class="text-sm font-medium text-[#76ABAE] hover:text-[#5CADB1] cursor-pointer transition">
-                            Ganti Foto
-                            <input type="file" id="profileAvatarInput" accept="image/*"
-                                onchange="previewAvatar(this)" class="hidden">
-                        </label>
+                        <div>
+                            <label
+                                class="text-sm font-medium text-[#76ABAE] hover:text-[#5CADB1] cursor-pointer transition">
+                                Ganti Foto
+                                <input type="file" id="profileAvatarInput" accept="image/*"
+                                    onchange="previewAvatar(this)" class="hidden">
+                            </label>
+                            <p id="profileAvatarError" class="hidden text-xs text-rose-500 mt-1"></p>
+                        </div>
                     </div>
 
                     <div>
@@ -54,6 +57,7 @@
                             <input type="text" id="profileName" value="{{ auth()->user()->name }}"
                                 class="flex-1 bg-transparent text-sm text-[#0A2947] focus:outline-none">
                         </div>
+                        <p id="profileNameError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <div>
@@ -63,6 +67,7 @@
                             <input type="text" id="profileUsername" value="{{ auth()->user()->username }}"
                                 class="flex-1 bg-transparent text-sm text-[#0A2947] focus:outline-none">
                         </div>
+                        <p id="profileUsernameError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <div>
@@ -72,12 +77,14 @@
                             <input type="email" id="profileEmail" value="{{ auth()->user()->email }}"
                                 class="flex-1 bg-transparent text-sm text-[#0A2947] focus:outline-none">
                         </div>
+                        <p id="profileEmailError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <div>
                         <label class="text-sm font-medium text-[#0A2947]">Bio</label>
                         <textarea rows="3" id="profileBio"
                             class="w-full bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5 text-sm text-[#0A2947] focus:outline-none resize-none">{{ auth()->user()->bio }}</textarea>
+                        <p id="profileBioError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <button type="button" onclick="submitProfileUpdate('{{ route('profile.update') }}')"
@@ -88,7 +95,7 @@
 
                 <div data-tab-panel="password" class="hidden p-6 flex-col gap-4">
 
-                    <div id="passwordError"
+                    <div id="passwordGeneralError"
                         class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
                     </div>
 
@@ -99,6 +106,7 @@
                             <input type="password" id="currentPassword" placeholder="••••••••"
                                 class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                         </div>
+                        <p id="currentPasswordError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <div>
@@ -108,6 +116,7 @@
                             <input type="password" id="newPassword" placeholder="••••••••"
                                 class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                         </div>
+                        <p id="newPasswordError" class="hidden text-xs text-rose-500 mt-1"></p>
                     </div>
 
                     <div>

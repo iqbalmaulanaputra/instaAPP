@@ -11,7 +11,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body data-flash-success="{{ session('success') }}" class="bg-[#ECF0F3] text-[#0A2947] min-h-screen pb-20 lg:pb-0">
+<body data-flash-success="{{ session('success') }}" data-flash-info="{{ session('info') }}"
+    data-authenticated="{{ auth()->check() ? '1' : '0' }}" class="bg-[#ECF0F3] text-[#0A2947] min-h-screen pb-20 lg:pb-0">
 
     <div class="max-w-350 mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_300px] gap-6 px-6 py-6">
 
