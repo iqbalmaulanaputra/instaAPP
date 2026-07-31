@@ -21,10 +21,14 @@
     </nav>
 
     <div class="mt-auto pt-6 border-t border-[#76838F]/30">
-        <button type="button" onclick="openModal('authModal')"
-            class="flex items-center justify-center gap-2 w-full bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-sm font-medium py-2.5 rounded-xl">
-            <i class='bx bx-log-in text-lg'></i> Masuk / Daftar
-        </button>
+        @auth
+            <x-nav.user-menu variant="sidebar" />
+        @else
+            <button type="button" onclick="openModal('authModal')"
+                class="flex items-center justify-center gap-2 w-full bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-sm font-medium py-2.5 rounded-xl">
+                <i class='bx bx-log-in text-lg'></i> Masuk / Daftar
+            </button>
+        @endauth
     </div>
 
 </aside>

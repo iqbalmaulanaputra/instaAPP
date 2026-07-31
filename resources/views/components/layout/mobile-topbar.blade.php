@@ -15,9 +15,13 @@
             <i class='bx bx-plus-circle text-lg'></i>
         </button>
 
-        <button type="button" onclick="openModal('authModal')"
-            class="bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-xs font-semibold px-4 py-2 rounded-full">
-            Masuk
-        </button>
+        @auth
+            <x-nav.user-menu variant="topbar" />
+        @else
+            <button type="button" onclick="openModal('authModal')"
+                class="bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-xs font-semibold px-4 py-2 rounded-full">
+                Masuk
+            </button>
+        @endauth
     </div>
 </div>

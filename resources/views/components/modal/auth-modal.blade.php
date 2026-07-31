@@ -28,12 +28,18 @@
         </div>
 
         <div class="overflow-y-auto scrollbar-hide">
-            <div id="loginPanel" class="p-6 flex flex-col gap-4">
+
+            <div id="loginForm" class="p-6 flex flex-col gap-4">
+
+                <div id="loginError"
+                    class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
+                </div>
+
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Username atau Email</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-user text-[#0A2947]/40'></i>
-                        <input type="text" placeholder="misal: demouser"
+                        <input type="text" id="loginField" placeholder="Masukkan username atau email"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
@@ -42,23 +48,28 @@
                     <label class="text-sm font-medium text-[#0A2947]">Kata Sandi</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
-                        <input type="password" placeholder="••••••••"
+                        <input type="password" id="loginPassword" placeholder="Masukkan kata sandi"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
 
-                <button type="button"
+                <button type="button" onclick="submitLogin('{{ route('login') }}')"
                     class="w-full bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-sm font-semibold py-3 rounded-xl mt-2">
                     Masuk ke InstaApp
                 </button>
             </div>
 
-            <div id="registerPanel" class="hidden p-6 flex-col gap-4 ">
+            <div id="registerForm" class="hidden p-6 flex-col gap-4">
+
+                <div id="registerError"
+                    class="hidden bg-rose-50 border border-rose-200 text-rose-600 text-sm px-4 py-3 rounded-xl">
+                </div>
+
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Nama Lengkap</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-id-card text-[#0A2947]/40'></i>
-                        <input type="text" placeholder="misal: Demo User"
+                        <input type="text" id="registerName" placeholder="Masukkan nama lengkap"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
@@ -67,7 +78,7 @@
                     <label class="text-sm font-medium text-[#0A2947]">Username</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-at text-[#0A2947]/40'></i>
-                        <input type="text" placeholder="misal: demouser"
+                        <input type="text" id="registerUsername" placeholder="Masukkan username"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
@@ -76,7 +87,7 @@
                     <label class="text-sm font-medium text-[#0A2947]">Email</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-envelope text-[#0A2947]/40'></i>
-                        <input type="email" placeholder="misal: demo@mail.com"
+                        <input type="email" id="registerEmail" placeholder="Masukkan email"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
@@ -85,12 +96,22 @@
                     <label class="text-sm font-medium text-[#0A2947]">Kata Sandi</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
                         <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
-                        <input type="password" placeholder="••••••••"
+                        <input type="password" id="registerPassword" placeholder="Masukkan kata sandi"
                             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
                     </div>
                 </div>
 
-                <button type="button"
+                <div>
+                    <label class="text-sm font-medium text-[#0A2947]">Konfirmasi Kata Sandi</label>
+                    <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
+                        <i class='bx bx-lock-alt text-[#0A2947]/40'></i>
+                        <input type="password" id="registerPasswordConfirmation"
+                            placeholder="Masukkan kembali kata sandi"
+                            class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
+                    </div>
+                </div>
+
+                <button type="button" onclick="submitRegister('{{ route('register') }}')"
                     class="w-full bg-[#76ABAE] hover:bg-[#5CADB1] transition text-white text-sm font-semibold py-3 rounded-xl mt-2">
                     Daftar Sekarang
                 </button>
