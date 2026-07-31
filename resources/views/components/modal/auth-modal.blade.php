@@ -1,9 +1,7 @@
 <div id="authModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm px-4">
     <div class="bg-white w-full max-w-md rounded-2xl overflow-hidden shadow-xl max-h-[90vh] flex flex-col">
-
-        {{-- Header --}}
         <div class="relative bg-[#76ABAE] px-6 py-8 text-center shrink-0">
-            <button type="button" onclick="closeAuthModal()"
+            <button type="button" onclick="closeModal('authModal')"
                 class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center text-white">
                 <i class='bx bx-x text-lg'></i>
             </button>
@@ -18,7 +16,6 @@
             <p class="text-white/80 text-sm mt-1">Autentikasi Pengguna &amp; Akses Komunitas</p>
         </div>
 
-        {{-- Tabs --}}
         <div class="flex border-b border-[#76838F]/20 shrink-0">
             <button type="button" id="tabLoginBtn" onclick="switchAuthTab('login')"
                 class="flex-1 py-3 text-sm font-semibold text-[#76ABAE] border-b-2 border-[#76ABAE]">
@@ -30,10 +27,7 @@
             </button>
         </div>
 
-        {{-- Scrollable content --}}
-        <div class="overflow-y-auto">
-
-            {{-- Login form --}}
+        <div class="overflow-y-auto scrollbar-hide">
             <div id="loginPanel" class="p-6 flex flex-col gap-4">
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Username atau Email</label>
@@ -59,8 +53,7 @@
                 </button>
             </div>
 
-            {{-- Register form --}}
-            <div id="registerPanel" class="hidden p-6 flex-col gap-4">
+            <div id="registerPanel" class="hidden p-6 flex-col gap-4 ">
                 <div>
                     <label class="text-sm font-medium text-[#0A2947]">Nama Lengkap</label>
                     <div class="flex items-center gap-2 bg-[#ECF0F3] rounded-xl px-4 py-3 mt-1.5">
@@ -107,50 +100,3 @@
 
     </div>
 </div>
-
-<script>
-    function openAuthModal() {
-        const modal = document.getElementById('authModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.classList.add('overflow-hidden');
-    }
-
-    function closeAuthModal() {
-        const modal = document.getElementById('authModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.classList.remove('overflow-hidden');
-    }
-
-    function switchAuthTab(tab) {
-        const loginPanel = document.getElementById('loginPanel');
-        const registerPanel = document.getElementById('registerPanel');
-        const tabLoginBtn = document.getElementById('tabLoginBtn');
-        const tabRegisterBtn = document.getElementById('tabRegisterBtn');
-
-        if (tab === 'login') {
-            loginPanel.classList.remove('hidden');
-            loginPanel.classList.add('flex');
-            registerPanel.classList.add('hidden');
-            registerPanel.classList.remove('flex');
-
-            tabLoginBtn.classList.add('text-[#76ABAE]', 'border-[#76ABAE]');
-            tabLoginBtn.classList.remove('text-[#0A2947]/50', 'border-transparent');
-
-            tabRegisterBtn.classList.add('text-[#0A2947]/50', 'border-transparent');
-            tabRegisterBtn.classList.remove('text-[#76ABAE]', 'border-[#76ABAE]');
-        } else {
-            registerPanel.classList.remove('hidden');
-            registerPanel.classList.add('flex');
-            loginPanel.classList.add('hidden');
-            loginPanel.classList.remove('flex');
-
-            tabRegisterBtn.classList.add('text-[#76ABAE]', 'border-[#76ABAE]');
-            tabRegisterBtn.classList.remove('text-[#0A2947]/50', 'border-transparent');
-
-            tabLoginBtn.classList.add('text-[#0A2947]/50', 'border-transparent');
-            tabLoginBtn.classList.remove('text-[#76ABAE]', 'border-[#76ABAE]');
-        }
-    }
-</script>

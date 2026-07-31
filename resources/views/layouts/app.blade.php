@@ -15,11 +15,10 @@
 
     <div class="max-w-350 mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_300px] gap-6 px-6 py-6">
 
-        <x-sidebar />
+        <x-layout.sidebar />
 
         <main class="flex flex-col gap-6 bg-transparent">
-            <x-mobile-topbar />
-
+            <x-layout.mobile-topbar />
             @yield('content')
         </main>
 
@@ -27,9 +26,10 @@
 
     </div>
 
-    <x-mobile-bottom-nav />
+    <x-layout.mobile-bottom-nav />
 
-    <x-auth-modal />
+    <x-modal.auth-modal />
+    <x-modal.create-post-modal />
 
 </body>
 

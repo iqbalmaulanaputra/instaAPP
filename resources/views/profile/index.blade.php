@@ -3,8 +3,6 @@
 @section('title', 'Profil')
 
 @section('content')
-
-    {{-- Back button + title --}}
     <div class="flex items-center gap-3">
         <button type="button"
             class="w-9 h-9 rounded-full bg-white border border-[#76838F]/30 shadow-md flex items-center justify-center text-[#0A2947] hover:bg-[#ECF0F3] transition">
@@ -13,7 +11,6 @@
         <p class="text-sm font-semibold text-[#0A2947]">&#64;demouser</p>
     </div>
 
-    {{-- Profile card --}}
     <div class="bg-white border border-[#76838F]/30 shadow-md rounded-2xl p-6">
         <div class="flex items-start justify-between flex-wrap gap-4">
 
@@ -33,7 +30,6 @@
             </button>
         </div>
 
-        {{-- Stats --}}
         <div class="grid grid-cols-3 gap-3 mt-5">
             <div class="bg-[#ECF0F3] rounded-xl py-3 text-center">
                 <p class="text-lg font-bold text-[#0A2947]">6</p>
@@ -49,13 +45,11 @@
             </div>
         </div>
 
-        {{-- Bio --}}
         <p class="text-sm text-[#0A2947]/70 mt-5">
             Selamat datang di InstaApp! 🚀
         </p>
     </div>
 
-    {{-- Posts section --}}
     @php
         $myPosts = [1, 2, 3, 4, 5, 6];
     @endphp

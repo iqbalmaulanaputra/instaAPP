@@ -4,14 +4,12 @@
 
 @section('content')
 
-    {{-- Search bar --}}
     <div class="bg-white border border-[#76838F]/30 shadow-md rounded-2xl px-4 py-3 flex items-center gap-3">
         <i class='bx bx-search text-xl text-[#0A2947]/40'></i>
         <input type="text" placeholder="Cari postingan, username, hashtag, atau lokasi..."
             class="flex-1 bg-transparent text-sm text-[#0A2947] placeholder:text-[#0A2947]/40 focus:outline-none">
     </div>
 
-    {{-- Filter tags --}}
     @php
         $tags = ['Semua', '#nature', '#coffeetime', 'Jakarta', 'Yogyakarta', 'Estetik'];
         $active = 'Semua';
@@ -26,7 +24,6 @@
         @endforeach
     </div>
 
-    {{-- Grid postingan --}}
     @php
         $explorePosts = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     @endphp
