@@ -9,7 +9,7 @@
         <button type="button" onclick="toggleDropdown('{{ $menuId }}')"
             class="flex items-center gap-2 w-full bg-[#ECF0F3] hover:bg-[#e2e7ea] transition text-[#0A2947] text-sm font-medium py-2.5 px-3 rounded-xl">
             <div
-                class="w-8 h-8 rounded-lg bg-[#76ABAE] flex items-center justify-center overflow-hidden shrink-0 text-white font-bold text-xs">
+                class="w-8 h-8 rounded-full bg-[#76ABAE] flex items-center justify-center overflow-hidden shrink-0 text-white font-bold text-xs">
                 @if (auth()->user()->avatar)
                     <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}"
                         class="w-full h-full object-cover">
