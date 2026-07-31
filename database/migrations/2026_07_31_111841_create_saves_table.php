@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('saves', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')
@@ -19,14 +19,14 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->text('comment');
-
             $table->timestamps();
+
+            $table->unique(['user_id', 'post_id']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('saves');
     }
 };
