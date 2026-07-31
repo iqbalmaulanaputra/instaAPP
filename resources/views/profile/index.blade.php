@@ -16,7 +16,7 @@
 
             <div class="flex items-center gap-4">
                 <div
-                    class="w-20 h-20 rounded-2xl overflow-hidden bg-[#ECF0F3] ring-2 ring-[#76ABAE] shrink-0 flex items-center justify-center font-bold text-2xl text-[#76ABAE]">
+                    class="w-20 h-20 rounded-full overflow-hidden bg-[#ECF0F3] ring-2 ring-[#76ABAE] shrink-0 flex items-center justify-center font-bold text-2xl text-[#76ABAE]">
                     @if (auth()->user()->avatar)
                         <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}"
                             class="w-full h-full object-cover">
