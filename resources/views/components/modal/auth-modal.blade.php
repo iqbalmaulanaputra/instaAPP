@@ -1,4 +1,4 @@
-<div id="authModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+<div id="authModal" class="hidden fixed inset-0 z-60 items-center justify-center bg-black/50 backdrop-blur-sm px-4">
     <div class="bg-white w-full max-w-md rounded-2xl overflow-hidden shadow-xl max-h-[90vh] flex flex-col">
         <div class="relative bg-[#76ABAE] px-6 py-8 text-center shrink-0">
             <button type="button" onclick="closeModal('authModal')"
