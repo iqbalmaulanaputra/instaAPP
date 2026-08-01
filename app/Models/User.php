@@ -53,4 +53,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Save::class);
     }
+
+    public function stories()
+    {
+        return $this->hasMany(Story::class);
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
+    }
+
+    public function isFollowing(int $userId): bool
+    {
+        return $this->following()->where('users.id', $userId)->exists();
+    }
 }
