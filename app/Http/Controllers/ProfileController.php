@@ -25,7 +25,10 @@ class ProfileController extends Controller
             ->latest()
             ->get();
 
-        return view('profile.index', compact('myPosts', 'savedPosts'));
+        $followers = $user->followers()->latest('follows.created_at')->get();
+        $following = $user->following()->latest('follows.created_at')->get();
+
+        return view('profile.index', compact('myPosts', 'savedPosts', 'followers', 'following'));
     }
 
     public function update(UpdateProfileRequest $request)
