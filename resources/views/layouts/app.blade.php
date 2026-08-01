@@ -34,6 +34,8 @@
 
     @auth
         <x-modal.settings-modal />
+        <x-modal.create-story-modal />
+        <x-modal.story-viewer-modal />
     @endauth
 
 </body>

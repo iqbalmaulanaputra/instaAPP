@@ -7,7 +7,15 @@
 <div class="bg-white border border-[#76838F]/30 shadow-md rounded-2xl overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3">
         <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full overflow-hidden bg-[#ECF0F3] shrink-0"></div>
+            <div
+                class="w-9 h-9 rounded-full overflow-hidden bg-[#ECF0F3] shrink-0 flex items-center justify-center font-bold text-[#76ABAE] text-sm">
+                @if ($post->user->avatar)
+                    <img src="{{ Storage::url($post->user->avatar) }}" alt="{{ $post->user->username }}"
+                        class="w-full h-full object-cover">
+                @else
+                    {{ strtoupper(substr($post->user->username, 0, 1)) }}
+                @endif
+            </div>
             <div>
                 <p class="text-sm font-semibold text-[#0A2947]">&#64;{{ $post->user->username }}</p>
             </div>
@@ -30,7 +38,8 @@
                 class="flex items-center gap-1.5 hover:text-rose-500 transition {{ $post->isLikedBy(auth()->id()) ? 'text-rose-500' : '' }}">
                 <i class='bx {{ $post->isLikedBy(auth()->id()) ? 'bxs-heart' : 'bx-heart' }}'></i>
                 @if ($post->likes_count > 0)
-                    <span id="likeCount-{{ $postId }}" class="text-sm font-medium">{{ $post->likes_count }}</span>
+                    <span id="likeCount-{{ $postId }}"
+                        class="text-sm font-medium">{{ $post->likes_count }}</span>
                 @endif
             </button>
 
