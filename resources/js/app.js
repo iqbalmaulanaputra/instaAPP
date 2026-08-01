@@ -58,7 +58,18 @@ async function apiRequest(url, method = "GET", body = null) {
     try {
         data = rawText ? JSON.parse(rawText) : null;
     } catch (e) {
-        console.error(e);
+        console.error(
+            "Respons bukan JSON valid dari",
+            url,
+            "- status:",
+            response.status,
+            "- redirected:",
+            response.redirected,
+            "- final url:",
+            response.url,
+            "- isi mentah:",
+            rawText,
+        );
     }
 
     return { ok: response.ok, status: response.status, data };
@@ -82,3 +93,6 @@ import "./dropdown";
 import "./profile";
 import "./logout";
 import "./createPost";
+import "./follow";
+import "./createStory";
+import "./storyViewer";
