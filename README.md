@@ -54,7 +54,7 @@ Aplikasi berbagi foto ala Instagram, dibangun pakai Laravel (Blade + vanilla JS 
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=instaapp
+   DB_DATABASE=instaApp
    DB_USERNAME=root
    DB_PASSWORD=
    ```
