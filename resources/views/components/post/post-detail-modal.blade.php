@@ -21,15 +21,31 @@
         <div class="w-full sm:w-1/2 flex flex-col max-h-[50vh] sm:max-h-[90vh]">
 
             <div class="flex items-center gap-3 px-4 py-3 border-b border-[#76838F]/20 shrink-0">
-                <div class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0"></div>
+                <div
+                    class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0 overflow-hidden flex items-center justify-center font-bold text-xs text-[#76ABAE]">
+                    @if ($post->user->avatar)
+                        <img src="{{ Storage::url($post->user->avatar) }}" alt="{{ $post->user->username }}"
+                            class="w-full h-full object-cover">
+                    @else
+                        {{ strtoupper(substr($post->user->username, 0, 1)) }}
+                    @endif
+                </div>
                 <p class="text-sm font-semibold text-[#0A2947]">&#64;{{ $post->user->username }}</p>
             </div>
 
             <div id="commentList-{{ $postId }}"
                 class="overflow-y-auto scrollbar-hide flex-1 flex flex-col divide-y divide-[#76838F]/10">
                 @if ($post->caption)
-                    <div class="flex items-start gap-3 px-4 py-3">
-                        <div class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0"></div>
+                    <div class="flex items-center gap-3 px-4 py-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0 overflow-hidden flex items-center justify-center font-bold text-xs text-[#76ABAE]">
+                            @if ($post->user->avatar)
+                                <img src="{{ Storage::url($post->user->avatar) }}" alt="{{ $post->user->username }}"
+                                    class="w-full h-full object-cover">
+                            @else
+                                {{ strtoupper(substr($post->user->username, 0, 1)) }}
+                            @endif
+                        </div>
                         <p class="text-sm text-[#0A2947]">
                             <span class="font-semibold">&#64;{{ $post->user->username }}</span>
                             {{ $post->caption }}
@@ -38,8 +54,16 @@
                 @endif
 
                 @foreach ($post->comments as $comment)
-                    <div class="flex items-start gap-3 px-4 py-3">
-                        <div class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0"></div>
+                    <div class="flex items-center gap-3 px-4 py-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-[#ECF0F3] shrink-0 overflow-hidden flex items-center justify-center font-bold text-xs text-[#76ABAE]">
+                            @if ($comment->user->avatar)
+                                <img src="{{ Storage::url($comment->user->avatar) }}"
+                                    alt="{{ $comment->user->username }}" class="w-full h-full object-cover">
+                            @else
+                                {{ strtoupper(substr($comment->user->username, 0, 1)) }}
+                            @endif
+                        </div>
                         <p class="text-sm text-[#0A2947]">
                             <span class="font-semibold">&#64;{{ $comment->user->username }}</span>
                             {{ $comment->comment }}
