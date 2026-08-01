@@ -41,14 +41,16 @@
                 <p class="text-lg font-bold text-[#0A2947]">{{ $myPosts->count() }}</p>
                 <p class="text-xs text-[#0A2947]/50">Postingan</p>
             </div>
-            <div class="bg-[#ECF0F3] rounded-xl py-3 text-center">
-                <p class="text-lg font-bold text-[#0A2947]">150</p>
+            <button type="button" onclick="switchTab('followers', 'followListTabs'); openModal('followListModal')"
+                class="bg-[#ECF0F3] hover:bg-[#e2e7ea] transition rounded-xl py-3 text-center">
+                <p id="followersCount" class="text-lg font-bold text-[#0A2947]">{{ $followers->count() }}</p>
                 <p class="text-xs text-[#0A2947]/50">Pengikut</p>
-            </div>
-            <div class="bg-[#ECF0F3] rounded-xl py-3 text-center">
-                <p class="text-lg font-bold text-[#0A2947]">95</p>
+            </button>
+            <button type="button" onclick="switchTab('following', 'followListTabs'); openModal('followListModal')"
+                class="bg-[#ECF0F3] hover:bg-[#e2e7ea] transition rounded-xl py-3 text-center">
+                <p id="followingCount" class="text-lg font-bold text-[#0A2947]">{{ $following->count() }}</p>
                 <p class="text-xs text-[#0A2947]/50">Mengikuti</p>
-            </div>
+            </button>
         </div>
 
         <p class="text-sm text-[#0A2947]/70 mt-5">
@@ -71,9 +73,19 @@
         <div data-tab-panel="posts" class="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
             @forelse ($myPosts as $post)
                 <button type="button" onclick="openModal('postDetail-{{ $post->id }}')"
-                    class="aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
+                    title="{{ $post->likes_count }} suka · {{ $post->comments_count }} komentar"
+                    class="relative group aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
                     <img src="{{ Storage::url($post->image) }}" alt="{{ $post->caption }}"
                         class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center gap-4 text-white opacity-0 group-hover:opacity-100">
+                        <span class="flex items-center gap-1 text-sm font-semibold">
+                            <i class='bx bxs-heart'></i> {{ $post->likes_count }}
+                        </span>
+                        <span class="flex items-center gap-1 text-sm font-semibold">
+                            <i class='bx bxs-comment-detail'></i> {{ $post->comments_count }}
+                        </span>
+                    </div>
                 </button>
                 <x-post.post-detail-modal :post="$post" />
             @empty
@@ -86,9 +98,19 @@
         <div data-tab-panel="saved" class="hidden grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
             @forelse ($savedPosts as $post)
                 <button type="button" onclick="openModal('postDetail-{{ $post->id }}')"
-                    class="aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
+                    title="{{ $post->likes_count }} suka · {{ $post->comments_count }} komentar"
+                    class="relative group aspect-square rounded-xl overflow-hidden bg-white border border-[#76838F]/30 shadow-sm hover:shadow-md transition">
                     <img src="{{ Storage::url($post->image) }}" alt="{{ $post->caption }}"
                         class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center gap-4 text-white opacity-0 group-hover:opacity-100">
+                        <span class="flex items-center gap-1 text-sm font-semibold">
+                            <i class='bx bxs-heart'></i> {{ $post->likes_count }}
+                        </span>
+                        <span class="flex items-center gap-1 text-sm font-semibold">
+                            <i class='bx bxs-comment-detail'></i> {{ $post->comments_count }}
+                        </span>
+                    </div>
                 </button>
                 <x-post.post-detail-modal :post="$post" />
             @empty
@@ -98,5 +120,7 @@
             @endforelse
         </div>
     </div>
+
+    <x-modal.follow-list-modal :followers="$followers" :following="$following" />
 
 @endsection
